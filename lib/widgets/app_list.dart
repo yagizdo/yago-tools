@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:yago_tools/constants/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class PostList extends StatelessWidget {
-  PostList({Key? key, required this.snapshot}) : super(key: key);
+import '../models/app_model.dart';
+
+class AppList extends StatelessWidget {
+  AppList({Key? key, required this.snapshot}) : super(key: key);
   var snapshot;
 
   @override
@@ -29,9 +31,14 @@ class PostList extends StatelessWidget {
       return ListView.builder(
           itemCount: data!.length,
           itemBuilder: (context, index) {
+
+            // App Object
+            AppModel app = data[index];
+
+            // List Tile
             return ListTile(
-              title: Text(data[index].title!,style: TextStyle(color: white,fontSize: 17.sp,fontWeight: FontWeight.bold,),textAlign: TextAlign.start),
-              subtitle: Text(data[index].body!,style: TextStyle(color: white,fontSize: 13.sp),textAlign: TextAlign.start,),
+              title: Text(app.fields!.name ?? '',style: TextStyle(color: white,fontSize: 17.sp,fontWeight: FontWeight.bold,),textAlign: TextAlign.start),
+              subtitle: Text(app.fields!.description ?? '',style: TextStyle(color: white,fontSize: 13.sp),textAlign: TextAlign.start,),
             );
           });
     } else {
