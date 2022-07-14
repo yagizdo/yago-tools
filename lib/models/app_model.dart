@@ -25,11 +25,11 @@ class AppModel {
 
 class Fields {
   int? rating;
-  List<String>? tags;
+  List<dynamic>? tags;
   String? name;
   String? description;
   String? comment;
-  List<String>? category;
+  List<dynamic>? category;
   List<Images>? images;
 
   Fields(
@@ -43,11 +43,11 @@ class Fields {
 
   Fields.fromJson(Map<String, dynamic> json) {
     rating = json['rating'];
-    tags = json['Tags'].cast<String>();
+    tags = json['Tags'];
     name = json['Name'];
     description = json['description'];
     comment = json['comment'];
-    category = json['category'].cast<String>();
+    category = json['category'];
     if (json['images'] != null) {
       images = <Images>[];
       json['images'].forEach((v) {
