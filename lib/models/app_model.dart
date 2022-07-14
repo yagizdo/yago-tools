@@ -1,34 +1,11 @@
 class AppModel {
-  List<Records>? records;
-
-  AppModel({this.records});
-
-  AppModel.fromJson(Map<String, dynamic> json) {
-    if (json['records'] != null) {
-      records = <Records>[];
-      json['records'].forEach((v) {
-        records!.add(new Records.fromJson(v));
-      });
-    }
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.records != null) {
-      data['records'] = this.records!.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
-}
-
-class Records {
   String? id;
   String? createdTime;
   Fields? fields;
 
-  Records({this.id, this.createdTime, this.fields});
+  AppModel({this.id, this.createdTime, this.fields});
 
-  Records.fromJson(Map<String, dynamic> json) {
+  AppModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     createdTime = json['createdTime'];
     fields =
