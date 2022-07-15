@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:yago_tools/screens/home_detail_view.dart';
 
 import '../constants/app_colors.dart';
 import '../models/app_model.dart';
@@ -95,16 +96,21 @@ class AppCard extends StatelessWidget {
             Positioned(
                 top: 120.h,
                 left: 120.w,
-                child: Container(
-                  decoration: const BoxDecoration(
-                      color: black,
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(150),bottomLeft: Radius.circular(50))
-                  ),
-                  height: 70.h,
-                  width: 0.2.sw,
-                  child: Padding(
-                    padding: EdgeInsets.only(right: 15.w),
-                    child: Icon(Icons.arrow_forward_rounded,color: white,size: 25.sp,),
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => HomeDetailView(app: app)));
+                  },
+                  child: Container(
+                    decoration: const BoxDecoration(
+                        color: black,
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(150),bottomLeft: Radius.circular(50))
+                    ),
+                    height: 70.h,
+                    width: 0.2.sw,
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 15.w),
+                      child: Icon(Icons.arrow_forward_rounded,color: white,size: 25.sp,),
+                    ),
                   ),
                 ))
           ],
