@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,8 +33,10 @@ class AppCard extends StatelessWidget {
                     children: [
                       Hero(
                           tag: app,
-                          child: Image.network(
-                              app.fields!.images![0].thumbnails!.small!.url!)),
+                          child: CachedNetworkImage(
+                            useOldImageOnUrlChange: true,
+                            placeholder: (context,url) => const CircularProgressIndicator(),
+                            imageUrl: app.fields!.images![0].thumbnails!.small!.url!,)),
                       SizedBox(
                         width: 5.w,
                       ),
@@ -54,7 +57,7 @@ class AppCard extends StatelessWidget {
                         EdgeInsets.symmetric(vertical: 2.h, horizontal: 5.w),
                     child: Text(
                       app.fields!.tags![0],
-                      style: TextStyle(color: white),
+                      style: const TextStyle(color: white),
                     ),
                     decoration: BoxDecoration(
                       color: app.fields!.tags![0]! == 'Free'
