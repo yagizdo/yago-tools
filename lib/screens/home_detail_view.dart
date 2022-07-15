@@ -16,6 +16,7 @@ class HomeDetailView extends StatelessWidget {
           Hero(
             tag: app,
             child: CachedNetworkImage(
+              memCacheHeight: 150,
                 useOldImageOnUrlChange: true,
                 placeholder: (context, url) =>
                     const CircularProgressIndicator(),

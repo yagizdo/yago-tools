@@ -23,6 +23,7 @@ class AppCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+
                   // Sizedbox for top padding
                   SizedBox(
                     height: 10.h,
