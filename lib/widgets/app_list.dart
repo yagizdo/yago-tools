@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yago_tools/constants/app_colors.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:yago_tools/widgets/app_card.dart';
 
 import '../models/app_model.dart';
 
@@ -28,18 +28,16 @@ class AppList extends StatelessWidget {
       var data = snapshot!.data;
 
       // Post List
-      return ListView.builder(
+      return GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
           itemCount: data!.length,
           itemBuilder: (context, index) {
 
             // App Object
             AppModel app = data[index];
 
-            // List Tile
-            return ListTile(
-              title: Text(app.fields!.name ?? '',style: TextStyle(color: white,fontSize: 17.sp,fontWeight: FontWeight.bold,),textAlign: TextAlign.start),
-              subtitle: Text(app.fields!.description ?? '',style: TextStyle(color: white,fontSize: 13.sp),textAlign: TextAlign.start,),
-            );
+            // App Card
+            return AppCard(app: app);
           });
     } else {
       return Text('State : ${snapshot.connectionState}');
