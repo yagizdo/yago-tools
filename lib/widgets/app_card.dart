@@ -37,7 +37,7 @@ class AppCard extends StatelessWidget {
                   // Sizedbox for top padding
                   SizedBox(height: 5.h),
 
-                  // Tag
+                  // Premium - Free Tag
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 2.h,horizontal: 5.w),
                     child: Text(app.fields!.tags![0],style: TextStyle(color: white),),
@@ -46,6 +46,9 @@ class AppCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(5),
                     ),
                   ),
+
+                  // Sizedbox for padding
+                  SizedBox(height: 10.h,),
 
                   // Rating
                   RatingBar.builder(
@@ -59,7 +62,30 @@ class AppCard extends StatelessWidget {
                       }
                   ),
 
-                  // Details
+                  // Sizedbox for padding
+                  SizedBox(height: 10.h,),
+
+                  // Tags
+                  SizedBox(
+                    height: 20.h,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: app.fields?.category?.length ?? 0,
+                      itemBuilder: (context,index) {
+                        return Padding(
+                          padding: EdgeInsets.only(right: 5.w),
+                          child: Container(
+                            padding: EdgeInsets.symmetric(vertical: 2.h,horizontal: 5.w),
+                            child: Text(app.fields!.category![index],style: const TextStyle(color: black),),
+                            decoration: BoxDecoration(
+                              color: app.fields!.category![index]! == 'work' ? const Color(0xFFCFDEFF) : const Color(0xFFD0F7C3),
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  )
 
                 ],
               ),
@@ -67,7 +93,7 @@ class AppCard extends StatelessWidget {
 
             // Go detail page
             Positioned(
-                top: 110.h,
+                top: 120.h,
                 left: 120.w,
                 child: Container(
                   decoration: const BoxDecoration(
