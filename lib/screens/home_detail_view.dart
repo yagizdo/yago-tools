@@ -6,6 +6,18 @@ class HomeDetailView extends StatelessWidget {
   AppModel app;
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(app.fields?.name ?? 'No Name'),
+      ),
+      body: Column(
+        children: [
+          Hero(
+              tag: app,
+              child: Image.network(app.fields?.images?[0].thumbnails?.large?.url ?? '')),
+          Text(''),
+        ],
+      ),
+    );
   }
 }
